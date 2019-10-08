@@ -91,6 +91,8 @@ class ImageUtils(object):
 
     @classmethod
     def hash(cls, image, filename=None):
+        from PIL import ImageFile
+        ImageFile.LOAD_TRUNCATED_IMAGES = True
         # Return already calculated hash in memory
         if cls.saved_hashes.get(filename, None):
             return cls.saved_hashes.get(filename, None)
